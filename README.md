@@ -30,17 +30,17 @@ We plan to use enhanced daily data about significant assets as our stock variati
 * Is the stock market affected by quotations or the opposite?
 * Does the news only relate recent variations of the stock market when these variations have already been officially published?
 * Are we able to predict a specific stock market using sentiment analysis on newspaper quotes?
-* Is a daily frequency sufficient to capture correlation or causation between news and stock prices? Do we need minute or even second precision to get significant results?
+* Is a daily frequency sufficient to capture correlation or causation between news and stock prices?
 * Can we quantify the time window within which a quote can influence the stock market ? (We suppose here that sentiment influence must vanish when time is passing).
 * What is the correlation between media quotations and stock prices behavior under a specific model?
-* Which type of news (conventional VS social network) correlates better with stock movements ?
+* Which type of news (conventional VS social network) correlates better with stock movements for the same model?
 * What are good embedded features for stock prediction using NLP on quotations?
-* Are there some news sources that are particularly good at predicting stock prices/correlate better with stock prices (e.g. economic newspapers, economists on twitter…)?
-* What kind of sentiment analysis captures valuable information from quotes (embedding VS rule-based sentiment analysis) ?
+* Are there some news sources that are particularly good at predicting stock prices/correlate better with stock prices (e.g. economic newspapers, economists, Elon Musk...)?
+* What kind of sentiment analysis features capture valuable information from quotes? Rule-based or embedding sentiment analysis ? TensorHub model (GloVe, fasttext, word2vec) ?
 * Are they red flags in quotes that are better predictors than sentiment analysis ?
 * Which assets are more affected by sentiment if applicable?
-* Which existing NLP pre-trained model (GloVe, fasttext, word2vec...) performs the best on the Quotebank dataset for predicting stock market ?
 * Are assets affected proportionally to the frequency they are mentioned in quotes ?
+
 
 
 ## Proposed Additional Datasets
@@ -100,6 +100,27 @@ The raw data from stock market is irrelevant and we need to rather capture varia
 ## Proposed timeline & organization within the team
 
 
+| Task          | Expected commited hours          | ID Task          |Deadline          |
+| ------------- | ------------- | ------------- | ------------- |
+| Data steps: baseline daily stock data / higher frequency stock data / twitter data | #5 | #1|25.11.2021|
+| Feature steps for quotes: rule-based NLP / context aware NLP / custom TensorHub model / red flags / short term memory assessment| 5h| #2|25.11.2021|
+| Performance steps: measure correlation, prediction score, assets variations proportional to frequency in quotes >> for each configuration | 5h| #3|25.11.2021|
+| Extra steps: inverse prediction of sentiment using stock variation, which assets are more sensible to sentiment, which information sources have the more influence| 5h| #4|06.12.2021|
+| Visualization  | 10h| #5|10.12.2021|
+| Github README final update | 2h| #6|16.12.2021|
+| Training Model for detecting flags| 6h| #7|02.12.2021|
+| Writting data story and preparing final presentation | 4h| #8|16.12.2021|
+| Running tests and tabulating final results| 10h| #9|10.12.2021|
+| Crawling data | 10h| #10|25.11.2021|
+
+
+**Table of assigments**
+| Names          | ID Task          | 
+| ------------- |  ------------- | 
+|Antoine Escoyez|#1 #2 #3|
+|Rhita Mamou|#6 #9 #5|
+|Mohamed Allouch|#7 #8|
+|Marcel Moran Calderon|#10 #4|
 
 ## Contact
 * mohamed.allouch@epfl.ch
