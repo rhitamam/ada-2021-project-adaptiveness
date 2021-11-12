@@ -7,12 +7,8 @@
 * Marcel Moran Calderon
 
 ## Abstract
-The US-China trade war began in July 2018, eventually leading to tariffs on some US$550 billion of Chinese goods and US$185 billion of US goods [1].
-We wish to analyze the US VS China trade war in order to build our data story around  the one million dollar question : which comes first, the price or the sentiment?
-Indeed, since those two countries have such an influence on the world economy, we can assume that every single political tension related in the press is susceptible to have some repercussions on assets [2].
-The end goal would be to perform interesting analyzes about stock prices correlation with announcements in the US press and even causation if applicable. We refine our ideas in the research questions section.
-Quotebank dataset [3] can be used to extract sentiment from its great amount of quotes which cover the trade war period.
-We plan to use enhanced daily data about significant assets as our stock variation reference [4, 5].
+The US-China trade war began in July 2018, eventually leading to tariffs on some US$550 billion of Chinese goods and US$185 billion of US goods [1]. We wish to analyze the US VS China trade war in order to build our data story around  the one million dollar question : which comes first, the price or the sentiment? Indeed, since those two countries have such an influence on the world economy, we can assume that every single political tension related in the press is susceptible to have some repercussions on assets [2]. The end goal would be to perform interesting analyzes about stock prices correlation with announcements in the US press and even causation if applicable. We refine our ideas in the research questions section. Quotebank dataset [3] can be used to extract sentiment from its great amount of quotes which cover the trade war period. We plan to use enhanced daily data about significant assets as our stock variation reference [4, 5].
+
 
 [1] South China Morning Post. 2021. Timeline of the US-China trade war since July 2018. [online] Available at: <https://www.scmp.com/economy/china-economy/article/3146489/us-china-trade-war-timeline-key-dates-and-events-july-2018> [Accessed 12 November 2021].
 
@@ -92,6 +88,7 @@ We plan to use first daily data from the stock market then refine the frequency 
 ### Capture quote sentiment
 We can perform several types of sentiment analysis, rule-based NLP (textblob, vader) averaging the sentiment of each word in quote to get polarity feature for baseline, then use context aware NLP libraries (flair) to better capture the sentiment of the quote. We can finally refine our model by using pre-trained models from TensorHub (glove, word2vec) and train them on newspaper data ; word red flags for quotes should help capture simpler and reliable information.
 
+
 ### Capture stock market variation
 The raw data from stock market is irrelevant and we need to rather capture variation and index value to capture the market trends for which we try to discover correlation and causation through log price return and the volatility.
 
@@ -102,7 +99,7 @@ The raw data from stock market is irrelevant and we need to rather capture varia
 
 | Task          | Expected commited hours          | ID Task          |Deadline          |
 | ------------- | ------------- | ------------- | ------------- |
-| Data steps: baseline daily stock data / higher frequency stock data / twitter data | #5 | #1|25.11.2021|
+| Data steps: baseline daily stock data / higher frequency stock data / twitter data | 5h | #1|25.11.2021|
 | Feature steps for quotes: rule-based NLP / context aware NLP / custom TensorHub model / red flags / short term memory assessment| 5h| #2|25.11.2021|
 | Performance steps: measure correlation, prediction score, assets variations proportional to frequency in quotes >> for each configuration | 5h| #3|25.11.2021|
 | Extra steps: inverse prediction of sentiment using stock variation, which assets are more sensible to sentiment, which information sources have the more influence| 5h| #4|06.12.2021|
