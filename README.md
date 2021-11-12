@@ -75,7 +75,7 @@ Stock market dataset and financial data in general are noisy data because of the
 
 ### Twitter
 
-Using [Twitter API](https://developer.twitter.com/en/docs/twitter-api/early-access) or [snscrape library](https://github.com/JustAnotherArchivist/snscrape), we have been able to collect around 200k tweets that will enrich our dataset.
+Using [Twitter API](https://developer.twitter.com/en/docs/twitter-api/early-access) or [snscrape library](https://github.com/JustAnotherArchivist/snscrape), we have been able to collect around 150K tweets that will enrich our dataset.
 We generated a query with words related to China and also added constraints in the query so we would get tweets published from near the US and in english. We decided to add these constraints first in order to minimise the volume of tweets that we might have to work with and avoid unfeasible downloading time of tweets. 
 
 
