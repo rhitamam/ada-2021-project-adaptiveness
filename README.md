@@ -1,4 +1,7 @@
 # The US VS China Trade War
+## Data Story website
+
+https://rhitamam.github.io/
 
 ## Members:
 * Antoine Escoyez
@@ -22,21 +25,13 @@ The US-China trade war began in July 2018, eventually leading to tariffs on some
 
 
 ## Research questions	
-* Which comes first, the price or the sentiment?
 * Is the stock market affected by quotations or the opposite?
 * Does the news only relate recent variations of the stock market when these variations have already been officially published?
 * Are we able to predict a specific stock market using sentiment analysis on newspaper quotes?
-* Is a daily frequency sufficient to capture correlation or causation between news and stock prices?
 * Can we quantify the time window within which a quote can influence the stock market ? (We suppose here that sentiment influence must vanish when time is passing).
 * What is the correlation between media quotations and stock prices behavior under a specific model?
-* Which type of news (conventional VS social network) correlates better with stock movements for the same model?
-* What are good embedded features for stock prediction using NLP on quotations?
-* Are there some news sources that are particularly good at predicting stock prices/correlate better with stock prices (e.g. economic newspapers, economists, Elon Musk...)?
-* What kind of sentiment analysis features capture valuable information from quotes? Rule-based or embedding sentiment analysis ? TensorHub model (GloVe, fasttext, word2vec) ?
 * Are they red flags in quotes that are better predictors than sentiment analysis ?
 * Which assets are more affected by sentiment if applicable?
-* Are assets affected proportionally to the frequency they are mentioned in quotes ?
-
 
 
 ## Proposed Additional Datasets
@@ -51,33 +46,15 @@ so that we can seek the effect of the general sentiment on various fields.
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | -------------- | ------------   |
 | 2018-02-02 12:00:00 | 60.200|60.748|60.099|60.369|510313|0|0|- 0.02065650718972446|
 
-
-### Twitter dataset
-
-Quotebank is more likely to give us quotes from conventional news, i.e. newspapers. Even if the social media activity of important persons is often related in the press (like Donald Trump, not to name him…) we thought it might be interesting to add extra quotes from a more informal media like Twitter.
-The retrieved data is available in the following format : each row in the dataset contains datetime of tweet, tweet id, tweet content, username, reply count, retweet count, like count and quote count.
-
-| datetime      | id            | Content       | Username      | Reply Count   | Retweet Count | Like Count    | Quote Count    |
-| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | -------------- |
-| 2018-02-02 12:00:00 | xxxxx | CHINA!! | @RealDonalTrump | 10 | 10 | 10 | 0 |
-
-
-
 ## Methods
 
 *We first need to perform data collection:*
 ### Quotebank
-Using Quotebank, we want first to isolate every quotation which is related to China. For that purpose we used the NLTK library to get a set of synonyms and antonyms for the word ‘china’. In addition, we will apply extra filtering to focus on quotations related to trade war, especially because in 2019 we might have to deal with a huge quantity of quotations related to the COVID-19 sanitary crisis.
+Using Quotebank, we want first to isolate every quotation which is related to China. For that purpose we used the NLTK library to get a set of synonyms and antonyms for the word ‘china’. In addition, we will apply extra filtering to focus on quotations related to trade war, especially because in 2019 we might have to deal with a huge quantity of quotations related to the COVID-19 sanitary crisis. It is important to clarify that some quotation related to trade might be missed because of the filtering, but from the analysis done in the dataset we could observe how the trade war topic still holds
 
 ### Stock market dataset
 
-Stock market dataset and financial data in general are noisy data because of the high frequency of extraction. Extra treatment is necessary to extract meaningful insights from it. Our first treatment is to compute the log price return of an asset, then we will compute volatility of the asset.
-
-### Twitter
-
-Using [Twitter API](https://developer.twitter.com/en/docs/twitter-api/early-access) or [snscrape library](https://github.com/JustAnotherArchivist/snscrape), we have been able to collect around 150K tweets that will enrich our dataset.
-We generated a query with words related to China and also added constraints in the query so we would get tweets published from near the US and in english. We decided to add these constraints first in order to minimise the volume of tweets that we might have to work with and avoid unfeasible downloading time of tweets. 
-
+Stock market dataset and financial data in general are noisy data because of the high frequency of extraction. Extra treatment is necessary to extract meaningful insights from it. Our first treatment is to compute the log price return of an asset.
 
 *Then we need to create proper features to perform our analyses for each research question:*
 
@@ -86,11 +63,10 @@ We generated a query with words related to China and also added constraints in t
 We plan to use first daily data from the stock market then refine the frequency to see if news only comes after variations. Using red flags in quotes we can assess the simultaneity of quoted information and stock variations. We will try to quantify the short term memory of news sentiment on stock variations by using quotes from a designed time window before the stock variation.
 
 ### Capture quote sentiment
-We can perform several types of sentiment analysis, rule-based NLP (textblob, vader) averaging the sentiment of each word in quote to get polarity feature for baseline, then use context aware NLP libraries (flair) to better capture the sentiment of the quote. We can finally refine our model by using pre-trained models from TensorHub (glove, word2vec) and train them on newspaper data ; word red flags for quotes should help capture simpler and reliable information.
-
+We can perform several types of sentiment analysis, rule-based NLP (textblob, vader) and machine learning models such as one shot bart model
 
 ### Capture stock market variation
-The raw data from stock market is irrelevant and we need to rather capture variation and index value to capture the market trends for which we try to discover correlation and causation through log price return and the volatility.
+The raw data from stock market is irrelevant and we need to rather capture variation and index value to capture the market trends for which we try to discover correlation and causation through log price return.
 
 
 
@@ -99,7 +75,7 @@ The raw data from stock market is irrelevant and we need to rather capture varia
 
 | Task          | Expected commited hours          | ID Task          |Deadline          |
 | ------------- | ------------- | ------------- | ------------- |
-| Data steps: baseline daily stock data / higher frequency stock data / twitter data | 5h | #1|25.11.2021|
+| Data steps: baseline daily stock data / higher frequency stock data| 5h | #1|25.11.2021|
 | Feature steps for quotes: rule-based NLP / context aware NLP / custom TensorHub model / red flags / short term memory assessment| 5h| #2|25.11.2021|
 | Performance steps: measure correlation, prediction score, assets variations proportional to frequency in quotes >> for each configuration | 5h| #3|25.11.2021|
 | Extra steps: inverse prediction of sentiment using stock variation, which assets are more sensible to sentiment, which information sources have the more influence| 5h| #4|06.12.2021|
